@@ -20,7 +20,7 @@ public class ConcreteSubject implements Subject {
     @Override
     public void notify(String message) {
         for(Observer observer : observerList){
-            observer.update(message);
+            observer.xiaBan();
         }
     }
 }
