@@ -25,12 +25,22 @@ package com.saint.demo.design.observer;
  *
  *      假设来了一个D，D在下班时喝水，那么久可以直接新增一个类就好了，之前的逻辑也不需要修改
  *
+ *  优点：
+ *      下班这个动作跟各个同事解耦合，即：观察者和被观察者耦合了，接口耦合
+ *      支持广播通讯，即：与每一个注册的观察者进行通讯
+ *  缺点：
+ *     时效不能保证
+ *     各个被观察者之间有循环依赖，会触发循环调用，导致系统崩溃
+ *
+ *   应用场景：
+ *      对一个对象状态的更新，需要其他对象同步更新，而且其他对象的数量动态可变。
+ *      对象仅需要将自己的更新通知给其他对象而不需要知道其他对象的细节。
  */
 public class Main {
     public static void main(String[] args){
         Observer observer1 = new ColleagueA("小明");
         Observer observer2 = new ColleagueB("老王");
-        Observer observer3 = new ColleagueC("小红");
+        Observer observer3 = new ColleagueC("小黑");
 
         Subject concreteSubject = new ConcreteSubject();
 

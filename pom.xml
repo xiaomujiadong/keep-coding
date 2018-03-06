@@ -11,6 +11,9 @@
     <modules>
         <module>demo-everything</module>
         <module>study-spring</module>
+        <module>springboot-dubbo-privide</module>
+        <module>springboot-dubbo-api</module>
+        <module>springboot-dubbo-consumer</module>
     </modules>
     <build>
         <plugins>
