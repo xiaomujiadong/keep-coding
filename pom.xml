@@ -30,6 +30,7 @@
     <properties>
         <!-- spring的版本号 -->
         <spring-version>4.1.4.RELEASE</spring-version>
+        <spring-boot.version>1.5.7.RELEASE</spring-boot.version>
     </properties>
     <dependencies>
         <dependency>
@@ -106,6 +107,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
+        </dependency>
+
+        <!-- Springboot-web依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
