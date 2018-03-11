@@ -3,7 +3,7 @@ package com.saint.dependency;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-import src.main.java.com.saint.annotation.SaintAutowire;
+import com.saint.annotation.SaintAutowire;
 
 /**实现依赖注入的类
  * Created by wdcao on 2017/11/23.

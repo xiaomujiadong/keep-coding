@@ -18,6 +18,6 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 暴露服务 -->
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
 
-    <dubbo:service interface="com.saint.springboot.example.service.ExampleService"
-                   ref="exampleServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service interface="com.saint.service.TestService"
+                   ref="testService" retries="0" timeout="6000" />
 </beans>

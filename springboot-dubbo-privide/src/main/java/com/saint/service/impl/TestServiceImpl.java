@@ -2,9 +2,11 @@ package com.saint.service.impl;
 
 import com.saint.entity.User;
 import com.saint.service.TestService;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 
+@Service("testService")
 public class TestServiceImpl implements TestService {
     @Override
     public String sayHello(String name) {

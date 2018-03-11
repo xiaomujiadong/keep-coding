@@ -3,11 +3,11 @@ package com.saint;
 import java.util.List;
 import java.util.Map;
 
-import src.main.java.com.saint.annotation.AnnotationUtil;
-import src.main.java.com.saint.aop.saintproxy.IGod;
-import src.main.java.com.saint.dependency.Injection;
-import src.main.java.com.saint.ioc.IocFactory;
-import src.main.java.com.saint.resource.ClasspathPackageScanner;
+import com.saint.annotation.AnnotationUtil;
+import com.saint.aop.saintproxy.IGod;
+import com.saint.dependency.Injection;
+import com.saint.ioc.IocFactory;
+import com.saint.resource.ClasspathPackageScanner;
 
 /**
  * Hello world!

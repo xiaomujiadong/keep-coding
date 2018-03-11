@@ -5,7 +5,7 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.main.java.com.saint.resource.ClasspathPackageScanner;
+import com.saint.resource.ClasspathPackageScanner;
 
 /**
  * Created by wdcao on 2017/11/21.

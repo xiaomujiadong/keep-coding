@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import src.main.java.com.saint.annotation.SaintAop;
-import src.main.java.com.saint.annotation.SaintAopAfter;
-import src.main.java.com.saint.annotation.SaintAopBefore;
-import src.main.java.com.saint.annotation.SaintBean;
-import src.main.java.com.saint.annotation.SaintComponent;
-import src.main.java.com.saint.aop.saintproxy.SaintProxy;
+import com.saint.annotation.SaintAop;
+import com.saint.annotation.SaintAopAfter;
+import com.saint.annotation.SaintAopBefore;
+import com.saint.annotation.SaintBean;
+import com.saint.annotation.SaintComponent;
+import com.saint.aop.saintproxy.SaintProxy;
 
 /**实现控制反转的类
  * Created by wdcao on 2017/11/23.

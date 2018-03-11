@@ -1,6 +1,6 @@
 package com.saint.aop.saintproxy;
 
-import src.main.java.com.saint.annotation.SaintComponent;
+import com.saint.annotation.SaintComponent;
 
 @SaintComponent
 public class Person implements IGod{

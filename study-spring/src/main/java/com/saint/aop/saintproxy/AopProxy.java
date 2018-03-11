@@ -1,9 +1,9 @@
 package com.saint.aop.saintproxy;
 
-import src.main.java.com.saint.annotation.SaintAop;
-import src.main.java.com.saint.annotation.SaintAopAfter;
-import src.main.java.com.saint.annotation.SaintAopBefore;
-import src.main.java.com.saint.annotation.SaintComponent;
+import com.saint.annotation.SaintAop;
+import com.saint.annotation.SaintAopAfter;
+import com.saint.annotation.SaintAopBefore;
+import com.saint.annotation.SaintComponent;
 
 @SaintAop
 @SaintComponent

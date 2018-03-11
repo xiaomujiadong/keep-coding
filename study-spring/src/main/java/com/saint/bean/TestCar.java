@@ -1,7 +1,7 @@
 package com.saint.bean;
 
-import src.main.java.com.saint.annotation.SaintAutowire;
-import src.main.java.com.saint.annotation.SaintBean;
+import com.saint.annotation.SaintAutowire;
+import com.saint.annotation.SaintBean;
 
 /**
  * Created by wdcao on 2017/11/21.

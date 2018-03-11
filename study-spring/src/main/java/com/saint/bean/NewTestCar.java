@@ -1,6 +1,6 @@
 package com.saint.bean;
 
-import src.main.java.com.saint.annotation.SaintBean;
+import com.saint.annotation.SaintBean;
 
 @SaintBean(id="newTestCar")
 public class NewTestCar implements ICar {

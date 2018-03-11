@@ -1,5 +1,7 @@
 package com.saint.annotation;
 
+import com.saint.resource.ClasspathPackageScanner;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
@@ -8,8 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import src.main.java.com.saint.resource.ClasspathPackageScanner;
 
 /**
  * Created by wdcao on 2017/11/21.

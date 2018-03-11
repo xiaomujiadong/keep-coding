@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 import java.util.Map;
 import java.util.Set;
 
-import src.main.java.com.saint.ioc.IocFactory;
+import com.saint.ioc.IocFactory;
 
 public class SaintProxy implements InvocationHandler {
     private Object target;
