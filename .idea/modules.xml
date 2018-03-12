@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/demo-everything/demo-everything.iml" filepath="$PROJECT_DIR$/demo-everything/demo-everything.iml" />
       <module fileurl="file://$PROJECT_DIR$/keep-coding.iml" filepath="$PROJECT_DIR$/keep-coding.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-api/springboot-dubbo-api.iml" filepath="$PROJECT_DIR$/springboot-dubbo-api/springboot-dubbo-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-api/springboot-dubbo-api.iml" filepath="$PROJECT_DIR$/springboot-dubbo-api/springboot-dubbo-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-consumer/springboot-dubbo-consumer.iml" filepath="$PROJECT_DIR$/springboot-dubbo-consumer/springboot-dubbo-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-privide/springboot-dubbo-privide.iml" filepath="$PROJECT_DIR$/springboot-dubbo-privide/springboot-dubbo-privide.iml" />
       <module fileurl="file://$PROJECT_DIR$/study-spring/study-spring.iml" filepath="$PROJECT_DIR$/study-spring/study-spring.iml" />
