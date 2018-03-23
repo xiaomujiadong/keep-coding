@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="demo-everything" />
         <module name="springboot-dubbo-api" />
         <module name="springboot-dubbo-consumer" />
         <module name="springboot-dubbo-privide" />
+        <module name="study-demo" />
         <module name="study-spring" />
       </profile>
     </annotationProcessing>
@@ -19,6 +19,7 @@
       <module name="springboot-dubbo-api" target="1.8" />
       <module name="springboot-dubbo-consumer" target="1.8" />
       <module name="springboot-dubbo-privide" target="1.8" />
+      <module name="study-demo" target="1.8" />
       <module name="study-spring" target="1.8" />
     </bytecodeTargetLevel>
   </component>
