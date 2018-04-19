@@ -5,6 +5,8 @@ import java.util.Random;
 public class ThreadLocalMain {
     private static ThreadLocal<Integer> x = new ThreadLocal<Integer>();
 
+
+
     public static void main(String[] args){
         System.out.println("tset");
         for (int i = 0; i < 2; i++) {
