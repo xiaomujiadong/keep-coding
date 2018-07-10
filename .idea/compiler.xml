@@ -11,6 +11,7 @@
         <module name="springboot-dubbo-consumer" />
         <module name="springboot-dubbo-privide" />
         <module name="study-demo" />
+        <module name="study-hadoop" />
         <module name="study-spring" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
       <module name="springboot-dubbo-consumer" target="1.8" />
       <module name="springboot-dubbo-privide" target="1.8" />
       <module name="study-demo" target="1.8" />
+      <module name="study-hadoop" target="1.8" />
       <module name="study-spring" target="1.8" />
     </bytecodeTargetLevel>
   </component>

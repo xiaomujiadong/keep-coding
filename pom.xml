@@ -15,6 +15,7 @@
         <module>springboot-dubbo-consumer</module>
         <module>study-demo</module>
         <module>saint-util</module>
+        <module>study-hadoop</module>
     </modules>
     <build>
         <plugins>
