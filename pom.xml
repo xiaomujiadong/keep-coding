@@ -16,6 +16,7 @@
         <module>study-demo</module>
         <module>saint-util</module>
         <module>study-hadoop</module>
+        <module>study-rpc</module>
     </modules>
     <build>
         <plugins>
