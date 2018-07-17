@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="crawl" />
         <module name="saint-util" />
         <module name="springboot-dubbo-api" />
         <module name="springboot-dubbo-consumer" />
@@ -16,6 +17,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="crawl" target="1.8" />
       <module name="demo-everything" target="1.8" />
       <module name="keep-coding" target="1.8" />
       <module name="saint-util" target="1.8" />

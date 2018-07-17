@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/crawl/crawl.iml" filepath="$PROJECT_DIR$/crawl/crawl.iml" />
       <module fileurl="file://$PROJECT_DIR$/keep-coding.iml" filepath="$PROJECT_DIR$/keep-coding.iml" />
       <module fileurl="file://$PROJECT_DIR$/saint-util/saint-util.iml" filepath="$PROJECT_DIR$/saint-util/saint-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-api/springboot-dubbo-api.iml" filepath="$PROJECT_DIR$/springboot-dubbo-api/springboot-dubbo-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-consumer/springboot-dubbo-consumer.iml" filepath="$PROJECT_DIR$/springboot-dubbo-consumer/springboot-dubbo-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-dubbo-privide/springboot-dubbo-privide.iml" filepath="$PROJECT_DIR$/springboot-dubbo-privide/springboot-dubbo-privide.iml" />
       <module fileurl="file://$PROJECT_DIR$/study-demo/study-demo.iml" filepath="$PROJECT_DIR$/study-demo/study-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-hadoop/study-hadoop.iml" filepath="$PROJECT_DIR$/study-hadoop/study-hadoop.iml" />
       <module fileurl="file://$PROJECT_DIR$/study-hadoop/study-hadoop.iml" filepath="$PROJECT_DIR$/study-hadoop/study-hadoop.iml" />
       <module fileurl="file://$PROJECT_DIR$/study-spring/study-spring.iml" filepath="$PROJECT_DIR$/study-spring/study-spring.iml" />
     </modules>
