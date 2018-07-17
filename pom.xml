@@ -16,11 +16,8 @@
         <module>study-demo</module>
         <module>saint-util</module>
         <module>study-hadoop</module>
-<<<<<<< HEAD
         <module>crawl</module>
-=======
         <module>study-rpc</module>
->>>>>>> 574ffaa2607e1fb1f12283294dfc9305ec71ede8
     </modules>
     <build>
         <plugins>
