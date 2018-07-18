@@ -22,7 +22,7 @@ public class TimeServerHandler implements Runnable {
 
         try{
             bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-            printWriter = new PrintWriter(this.socket.getOutputStream());
+            printWriter = new PrintWriter(this.socket.getOutputStream(), true);
 
             String currnetTime = null;
             String body = null;
@@ -50,7 +50,7 @@ public class TimeServerHandler implements Runnable {
             if(printWriter!=null){
                 printWriter.close();
             }
-
+            printWriter = null;
             if(this.socket!=null){
                 try {
                     this.socket.close();
@@ -58,6 +58,7 @@ public class TimeServerHandler implements Runnable {
                     e.printStackTrace();
                 }
             }
+            this.socket = null;
         }
     }
 }
