@@ -1,6 +1,7 @@
 package com.saint.bookset;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -33,10 +34,10 @@ public class DownLoadUtil {
 
             String bookFilePath = Constant.DOWNLOAD_DIR+key+"\\book\\";
             for(int i=0;i<bookUrlList.size(); i++){
-                downloadFromUrl(bookUrlList.get(i), bookFilePath);
                 try {
+                    downloadFromUrl(bookUrlList.get(i), bookFilePath);
                     Thread.sleep(30*1000);
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     --i;
                     try {
@@ -47,7 +48,6 @@ public class DownLoadUtil {
                     continue;
                 }
             }
-            return;
         }
 
     }
@@ -59,27 +59,19 @@ public class DownLoadUtil {
         String[] contentArray = content.split("\r\n");
         List<String> urlList = new ArrayList<String>();
         for(String s:contentArray){
-            Map<String, String> innerMap = new HashMap<>();
-            String url = s.split(", ")[1].split("：")[1];
+            String url = s.split(", ")[1].replace("书URL：", "");
 
             urlList.add(url);
         }
         return urlList;
     }
 
-    public static String downloadFromUrl(String url,String dir) {
-
-        try {
-            URL httpurl = new URL(url);
-            String fileName = URLDecoder.decode(getFileNameFromUrl(url));
-            System.out.println(fileName);
-            File f = new File(dir + fileName);
-            FileUtils.copyURLToFile(httpurl, f);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Fault!";
-        }
-        return "Successful!";
+    public static void downloadFromUrl(String url,String dir) throws IOException {
+        URL httpurl = new URL(url);
+        String fileName = URLDecoder.decode(getFileNameFromUrl(url));
+        System.out.println(fileName);
+        File f = new File(dir + fileName);
+        FileUtils.copyURLToFile(httpurl, f);
     }
 
     public static String getFileNameFromUrl(String url){
