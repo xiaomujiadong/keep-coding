@@ -1,6 +1,5 @@
-package com.saint.netty.chapter2;
+package com.saint.netty.chapter2.bio;
 
-import javax.ws.rs.container.TimeoutHandler;
 import java.net.ServerSocket;
 import java.net.Socket;
 
