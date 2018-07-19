@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,6 @@ public class DownLoadUtil {
         //获取所有书的类别信息, key为每个类别的名称
         Map<String, Map<String, String>> bookTypeMap = CrawlBookType.getBookType();
 
-
         for(String key : bookTypeMap.keySet()){
             String bookTypeFilePath = Constant.DOWNLOAD_DIR+key+"\\downloadUrl.txt";
             List<String> bookUrlList = getBookDownLoadUrl(bookTypeFilePath);
@@ -35,20 +35,30 @@ public class DownLoadUtil {
             String bookFilePath = Constant.DOWNLOAD_DIR+key+"\\book\\";
             for(int i=0;i<bookUrlList.size(); i++){
                 try {
-                    downloadFromUrl(bookUrlList.get(i), bookFilePath);
-                    Thread.sleep(30*1000);
+                    boolean result = downloadFromUrl(bookUrlList.get(i), bookFilePath);
+
+                    if(result){
+                        Thread.sleep(30*1000);
+                    }
                 } catch (Exception e) {
+                    System.out.print("下载文件异常发生时间： "+new Timestamp(System.currentTimeMillis()));
                     e.printStackTrace();
                     --i;
                     try {
                         Thread.sleep(30*1000);
                     } catch (InterruptedException e1) {
+                        System.out.print("线程休眠异常发生时间： "+new Timestamp(System.currentTimeMillis()));
                         e1.printStackTrace();
                     }
                     continue;
                 }
             }
         }
+
+//        String str = "D:\\bookset\\小说\\book\\金醉-北洋夜行记-9787535495532.mobi";
+//        File dir = new File(str);
+//        if(dir.exists()) System.out.println("The file exist");
+//        else System.out.println("The file is not exist");
 
     }
 
@@ -66,12 +76,20 @@ public class DownLoadUtil {
         return urlList;
     }
 
-    public static void downloadFromUrl(String url,String dir) throws IOException {
+    public static boolean downloadFromUrl(String url,String dir) throws IOException {
         URL httpurl = new URL(url);
         String fileName = URLDecoder.decode(getFileNameFromUrl(url));
-        System.out.println(fileName);
+
         File f = new File(dir + fileName);
-        FileUtils.copyURLToFile(httpurl, f);
+
+        if(f.exists()) {
+            System.out.println(new Timestamp(System.currentTimeMillis())+": 当前路径: "+dir+" : 书："+fileName+" 已经存在");
+            return false;
+        }else{
+            System.out.println("文件路径： "+dir + fileName);
+            FileUtils.copyURLToFile(httpurl, f);
+        }
+        return true;
     }
 
     public static String getFileNameFromUrl(String url){
