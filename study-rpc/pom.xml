@@ -12,11 +12,10 @@
     <artifactId>study-rpc</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>RELEASE</version>
+            <version>4.0.21.Final</version>
         </dependency>
     </dependencies>
 </project>
