@@ -1,6 +1,7 @@
 package com.saint.bookset;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -28,6 +29,8 @@ public class DownLoadUtil {
         //获取所有书的类别信息, key为每个类别的名称
         Map<String, Map<String, String>> bookTypeMap = CrawlBookType.getBookType();
 
+        int bookCount = 1;
+
         for(String key : bookTypeMap.keySet()){
             String bookTypeFilePath = Constant.DOWNLOAD_DIR+key+"\\downloadUrl.txt";
             List<String> bookUrlList = getBookDownLoadUrl(bookTypeFilePath);
@@ -35,19 +38,31 @@ public class DownLoadUtil {
             String bookFilePath = Constant.DOWNLOAD_DIR+key+"\\book\\";
             for(int i=0;i<bookUrlList.size(); i++){
                 try {
-                    boolean result = downloadFromUrl(bookUrlList.get(i), bookFilePath);
+
+                    boolean result = downloadFromUrl(bookUrlList.get(i), bookFilePath, bookCount);
 
                     if(result){
                         Thread.sleep(30*1000);
                     }
+                    ++bookCount;
+                }catch (FileNotFoundException ex){
+                    System.out.print("FileNotFoundException 下载文件异常发生时间： "+new Timestamp(System.currentTimeMillis()));
+                    ex.printStackTrace();
+                    try {
+                        Thread.sleep(30*1000);
+                    } catch (InterruptedException e1) {
+                        System.out.print("FileNotFoundException 线程休眠异常发生时间： "+new Timestamp(System.currentTimeMillis()));
+                        e1.printStackTrace();
+                    }
+                    continue;
                 } catch (Exception e) {
-                    System.out.print("下载文件异常发生时间： "+new Timestamp(System.currentTimeMillis()));
+                    System.out.print("Exception 下载文件异常发生时间： "+new Timestamp(System.currentTimeMillis()));
                     e.printStackTrace();
                     --i;
                     try {
                         Thread.sleep(30*1000);
                     } catch (InterruptedException e1) {
-                        System.out.print("线程休眠异常发生时间： "+new Timestamp(System.currentTimeMillis()));
+                        System.out.print("Exception 线程休眠异常发生时间： "+new Timestamp(System.currentTimeMillis()));
                         e1.printStackTrace();
                     }
                     continue;
@@ -76,17 +91,16 @@ public class DownLoadUtil {
         return urlList;
     }
 
-    public static boolean downloadFromUrl(String url,String dir) throws IOException {
+    public static boolean downloadFromUrl(String url,String dir, int bookCount) throws FileNotFoundException,IOException {
         URL httpurl = new URL(url);
         String fileName = URLDecoder.decode(getFileNameFromUrl(url));
 
         File f = new File(dir + fileName);
-
         if(f.exists()) {
-            System.out.println(new Timestamp(System.currentTimeMillis())+": 当前路径: "+dir+" : 书："+fileName+" 已经存在");
+            System.out.println(new Timestamp(System.currentTimeMillis())+": 当前路径: "+dir+" : 书："+fileName+" 已经存在, 总共下载： "+bookCount+" 本书");
             return false;
         }else{
-            System.out.println("文件路径： "+dir + fileName);
+            System.out.println("文件路径： "+dir + fileName+", 总共下载： "+bookCount+" 本书");
             FileUtils.copyURLToFile(httpurl, f);
         }
         return true;
