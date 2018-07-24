@@ -6,5 +6,5 @@ package com.saint.bookset;
 public class Constant {
 
     public static final String URL = "https://bookset.me";
-    public static final String DOWNLOAD_DIR = "D:\\bookset\\";
+    public static final String DOWNLOAD_DIR = "E:\\开发工具和资料压缩包\\bookset\\";
 }

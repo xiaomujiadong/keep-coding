@@ -3,6 +3,7 @@ package com.saint.bookset;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.SocketException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.sql.Timestamp;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 import com.saint.util.IOUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.tomcat.util.ExceptionUtils;
 
 /**
  * 根据URL来下载
@@ -32,28 +34,28 @@ public class DownLoadUtil {
         int bookCount = 1;
 
         for(String key : bookTypeMap.keySet()){
+            int bookTypeCount = 1;
             String bookTypeFilePath = Constant.DOWNLOAD_DIR+key+"\\downloadUrl.txt";
             List<String> bookUrlList = getBookDownLoadUrl(bookTypeFilePath);
 
             String bookFilePath = Constant.DOWNLOAD_DIR+key+"\\book\\";
             for(int i=0;i<bookUrlList.size(); i++){
                 try {
+                    System.out.print("类别：" + key + " 总有: " + bookUrlList.size() + " 本书, 已下载： " + bookTypeCount + " 剩余： " + (bookUrlList.size() - bookTypeCount) + " 本");
 
                     boolean result = downloadFromUrl(bookUrlList.get(i), bookFilePath, bookCount);
 
-                    if(result){
-                        Thread.sleep(30*1000);
+                    if (result) {
+                        Thread.sleep(30 * 1000);
                     }
                     ++bookCount;
+                    ++bookTypeCount;
+                }catch (SocketException ex){
+                    String msg = ex.getMessage();
+                    System.out.println("--------------------"+msg);
                 }catch (FileNotFoundException ex){
                     System.out.print("FileNotFoundException 下载文件异常发生时间： "+new Timestamp(System.currentTimeMillis()));
                     ex.printStackTrace();
-                    try {
-                        Thread.sleep(30*1000);
-                    } catch (InterruptedException e1) {
-                        System.out.print("FileNotFoundException 线程休眠异常发生时间： "+new Timestamp(System.currentTimeMillis()));
-                        e1.printStackTrace();
-                    }
                     continue;
                 } catch (Exception e) {
                     System.out.print("Exception 下载文件异常发生时间： "+new Timestamp(System.currentTimeMillis()));
