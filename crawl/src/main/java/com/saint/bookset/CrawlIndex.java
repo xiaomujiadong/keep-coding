@@ -7,6 +7,7 @@ import com.saint.util.MatcherUtil;
 import java.io.File;
 
 import java.net.URLDecoder;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -21,17 +22,20 @@ public class CrawlIndex {
 
     public static void main(String[] args) {
         try {
-            String htmlContent = HttpUtil.getHtml(Constant.URL);
+            String htmlContent = HttpUtil.getHtml(Constant.TAG_URL);
 
             //匹配出书的类别信息
-            String pattern = "a title=\"(\\d+)个话题\" target=\"_blank\" href=\"https://bookset.me/tag/(\\S*)\"";
+//            String pattern = "a title=\"(\\d+)个话题\" target=\"_blank\" href=\"https://bookset.me/tag/(\\S*)\"";
+//            String pattern = "a href='https://bookset.me/tag/(\\S*)'";
+
+            String pattern = "<a href='https://bookset.me/tag/(\\S*)' title='(\\S*) Tag' class='(\\S*)' style='color:#666'>(\\S*) \\((\\d+)\\)</a>";
 
             List<String[]> list = MatcherUtil.matchList(pattern, htmlContent);
 
             Map<String, String> map = new HashMap<>();
             StringBuilder content = new StringBuilder();
             for(String[] strA:list){
-                String value = "书类别："+URLDecoder.decode(strA[1])+", 类别URL：https://bookset.me/tag/"+strA[1]+", 共有 "+strA[0]+" 本书\r\n";
+                String value = "书类别："+URLDecoder.decode(strA[1])+", 类别URL：https://bookset.me/tag/"+strA[1]+", 共有 "+strA[4]+" 本书\r\n";
                     map.put(URLDecoder.decode(strA[1]), value);
 
                 String bookType = URLDecoder.decode(strA[1]);
@@ -40,10 +44,15 @@ public class CrawlIndex {
                 }
 
                 String bookTypeDir = Constant.DOWNLOAD_DIR + bookType;
-                File file = new File(bookTypeDir);
-                file.mkdir();
                 String ts = map.get(bookType);
                 content.append(ts);
+                File file = new File(bookTypeDir);
+                if(file.exists()){
+                    System.out.println(new Timestamp(System.currentTimeMillis())+" 目录已经存在： "+bookTypeDir);
+                    continue;
+                }
+                file.mkdir();
+
                 System.out.println("value: "+URLDecoder.decode(ts));
             }
             IOUtils.writeTxtFile(Constant.DOWNLOAD_DIR+"index.txt", content.toString());

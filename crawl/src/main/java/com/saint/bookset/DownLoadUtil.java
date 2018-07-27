@@ -9,8 +9,10 @@ import java.net.URLDecoder;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.saint.util.IOUtils;
 import org.apache.commons.io.FileUtils;
@@ -21,6 +23,16 @@ import org.apache.tomcat.util.ExceptionUtils;
  * Created by wdcao on 2018/7/17.
  */
 public class DownLoadUtil {
+
+    private static final Set<String> filterSet = new HashSet<String>();
+
+    static {
+        filterSet.add("青春");
+        filterSet.add("言情");
+        filterSet.add("青春");
+    }
+
+
     /**
      * @param args
      */

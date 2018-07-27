@@ -1,6 +1,8 @@
 package com.saint.bookset;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,12 @@ public class CrawlBookType {
         Map<String, Map<String, String>> bookTypeMap = getBookType();
 
         for(String key : bookTypeMap.keySet()){
+            String fileName = Constant.DOWNLOAD_DIR+key+"\\index.txt";
+            File file = new File(fileName);
+            if (file.exists()) {
+                System.out.println(new Timestamp(System.currentTimeMillis()).toString()+" 文件已经存在： "+fileName);
+                continue;
+            }
             Map<String, String> innerMap = bookTypeMap.get(key);
             //每个类别的URL地址
             String url = innerMap.get("url");
@@ -51,7 +59,8 @@ public class CrawlBookType {
                 }
 
                 try {
-                    IOUtils.writeTxtFile(Constant.DOWNLOAD_DIR+key+"\\index.txt", fileContent.toString());
+
+                    IOUtils.writeTxtFile(fileName, fileContent.toString());
                 } catch (IOException e) {
                     --i;
                     e.printStackTrace();

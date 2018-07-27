@@ -4,7 +4,9 @@ import com.saint.util.HttpUtil;
 import com.saint.util.IOUtils;
 import com.saint.util.MatcherUtil;
 
+import java.io.File;
 import java.net.URLDecoder;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +36,12 @@ public class CrawlBook {
             String bookTypeFilePath = Constant.DOWNLOAD_DIR+key;
             Map<String, String> bookUrlMap = getBookUrl(bookTypeFilePath);
 
+            String fileName = bookTypeFilePath+"\\downloadUrl.txt";
+            File file = new File(fileName);
+            if (file.exists()) {
+                System.out.println(new Timestamp(System.currentTimeMillis()).toString()+" 文件已经存在： "+fileName);
+                continue;
+            }
             crawlBookDownLoadUrl(bookUrlMap, key);
 //            return;
         }
