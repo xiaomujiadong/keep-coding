@@ -2,6 +2,7 @@ package com.saint.bookset;
 
 import com.saint.util.ZipUtils;
 
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -19,7 +20,15 @@ public class ZipBookSet {
                 String srcFile = srcFileUrl + key;
                 String zipFileName = "E:\\开发工具和资料压缩包\\压缩\\"+key+".zip";
 
-                System.out.println("srcFile: "+srcFile+", zipFileName: "+zipFileName);
+                File file = new File(zipFileName);
+                if(file.exists()){
+                    System.out.println("文件已经存在： "+zipFileName+", srcFile: "+srcFile);
+                    continue;
+                }
+
+                System.out.println("-----文件不存在： "+zipFileName+", srcFile: "+srcFile);
+
+//                System.out.println("srcFile: "+srcFile+", zipFileName: "+zipFileName);
                 ZipUtils.zip(zipFileName, srcFile);
             }
 
