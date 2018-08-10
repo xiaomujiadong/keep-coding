@@ -12,5 +12,7 @@ public class Main {
         user.info();
 
         System.out.println("test");
+
+        System.out.println("master");
     }
 }
