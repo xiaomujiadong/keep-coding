@@ -18,6 +18,7 @@
         <module>study-hadoop</module>
         <module>crawl</module>
         <module>study-rpc</module>
+        <module>study-drools</module>
     </modules>
     <build>
         <plugins>
