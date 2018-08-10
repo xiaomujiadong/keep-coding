@@ -10,5 +10,7 @@ public class Main {
         User user = (User)context.getBean("user");
 
         user.info();
+
+        System.out.println("test");
     }
 }
