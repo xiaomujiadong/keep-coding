@@ -1,6 +1,5 @@
 package com.saint.netty.chapter4;
 
-import com.saint.netty.netdemo.HelloWorldServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -13,10 +12,10 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import java.net.InetSocketAddress;
 
-public class HelloWorldServer {
+public class TimeServer {
     private int port;
 
-    public HelloWorldServer(int port){
+    public TimeServer(int port){
         this.port = port;
     }
 
@@ -30,8 +29,8 @@ public class HelloWorldServer {
 
                         protected void initChannel(SocketChannel ch) throws Exception {
 //                            ch.pipeline().addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
-                            ch.pipeline().addLast("decoder", new StringDecoder());
-                            ch.pipeline().addLast("encoder", new StringEncoder());
+//                            ch.pipeline().addLast("decoder", new StringDecoder());
+//                            ch.pipeline().addLast("encoder", new StringEncoder());
                             ch.pipeline().addLast(new TimeServerHandler());
                         };
 
@@ -58,6 +57,6 @@ public class HelloWorldServer {
         } else {
             port = 8080;
         }
-        new HelloWorldServer(port).start();
+        new TimeServer(port).start();
     }
 }

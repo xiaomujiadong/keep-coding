@@ -16,7 +16,7 @@ import io.netty.handler.codec.string.StringEncoder;
 /**
  * https://blog.csdn.net/linuu/article/details/51306480
  */
-public class HelloWorldClient {
+public class TimeClient {
     static final String HOST = System.getProperty("host", "127.0.0.1");
     static final int PORT = Integer.parseInt(System.getProperty("port", "8080"));
     static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
@@ -34,8 +34,8 @@ public class HelloWorldClient {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
-                            p.addLast("decoder", new StringDecoder());
-                            p.addLast("encoder", new StringEncoder());
+//                            p.addLast("decoder", new StringDecoder());
+//                            p.addLast("encoder", new StringEncoder());
                             p.addLast(new TimeClienHandler());
                         }
                     });
