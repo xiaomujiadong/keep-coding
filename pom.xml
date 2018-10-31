@@ -19,6 +19,7 @@
         <module>crawl</module>
         <module>study-rpc</module>
         <module>study-drools</module>
+        <module>chat</module>
     </modules>
     <build>
         <plugins>
