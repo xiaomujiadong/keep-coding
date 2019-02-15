@@ -24,20 +24,36 @@ public class HelloWorldServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup worker = new NioEventLoopGroup();
         try{
+            //group指定ServerBootstrap的parentGroup 为bossGroup
+            //childGroup为woker
             ServerBootstrap serverBootstrap = new ServerBootstrap().group(bossGroup, worker)
-            .channel(NioServerSocketChannel.class).localAddress(new InetSocketAddress(port))
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-
+            //channel调用的是ServerBootstrap的父类AbstractBootstrap，作用是初始化serverBootstrap的channelFactory，
+            // 里面的参数表示以后创建出来的channel为NioServceSocketChannle对象，channel返回的是serverBootstrap对象
+            .channel(NioServerSocketChannel.class)
+            //给serverBootstrap初始化localAddress属性
+            .localAddress(new InetSocketAddress(port))
+            //初始化childHandler,返回serverBootstrap
+            .childHandler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel ch) throws Exception {
 //                            ch.pipeline().addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
                             ch.pipeline().addLast("decoder", new StringDecoder());
                             ch.pipeline().addLast("encoder", new StringEncoder());
                             ch.pipeline().addLast(new HelloWorldServerHandler());
                         };
-
-                    }).option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+                    })
+            //给serverBootstrap中的option赋值,方法为AbstractBootstrap中的
+            //option -->new LinkedHashMap<ChannelOption<?>, Object>();
+            .option(ChannelOption.SO_BACKLOG, 128)
+            //给serverBootstrap中childOption赋值，方法为ServerBootstrap中的
+            //childOption -->new LinkedHashMap<ChannelOption<?>, Object>();
+            .childOption(ChannelOption.SO_KEEPALIVE, true);
             // 绑定端口，开始接收进来的连接
+            //调用父类AbstractBootstrap中的bind
+            //bind首先判断group和channelFactory是否为空，根据这个可知，这2个属性为必须的
+            //最终调用AbstractBootstrap.doBind(localAddress); localAddress为.localAddress方法初始化的
+            //doBind(final SocketAddress localAddress):
+            // bind()返回的是DefaultChannelPromise对象
+            //sync()只是让ChannelFuture挂起
             ChannelFuture future = serverBootstrap.bind(port).sync();
 
             System.out.println("Server start listen at " + port );
