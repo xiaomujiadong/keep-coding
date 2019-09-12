@@ -21,7 +21,8 @@ public class HelloWorldServer {
     }
 
     public void start(){
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        //group的大部分属性的初始化在MultithreadEventExecutorGroup
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup worker = new NioEventLoopGroup();
         try{
             //group指定ServerBootstrap的parentGroup 为bossGroup

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Premain-Class: com.saint.demo.agent.MyPreMain
+Can-Redefine-Classes: true
+
