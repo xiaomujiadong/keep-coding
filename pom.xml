@@ -35,7 +35,7 @@
     </build>
     <properties>
         <!-- spring的版本号 -->
-        <spring-version>4.1.4.RELEASE</spring-version>
+        <spring-version>5.2.7.RELEASE</spring-version>
         <spring-boot.version>1.5.7.RELEASE</spring-boot.version>
     </properties>
     <dependencies>
